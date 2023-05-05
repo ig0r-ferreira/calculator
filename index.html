@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Online calculator with the 4 basic math operations."
+        />
+        <title>Calculator</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"
+            integrity="sha512-DmQnZdEjFh4R/040JxDSg3j9cS8D0oC5u2noG9Az18F11leiDFwrTOkm9PP+jdBMiH66QBa73O+54kZr5FyU7w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+    </head>
+    <body>
+        <main class="calculator">
+            <div class="display">
+                <output class="output output-sec"></output>
+                <output class="output output-main">0</output>
+            </div>
+
+            <div class="button-panel">
+                <button class="btn btn-clear" value="Delete" title="Clear all">
+                    C
+                </button>
+                <button
+                    class="btn btn-backspace"
+                    value="Backspace"
+                    title="Backspace"
+                >
+                    <i class="bi bi-backspace-fill"></i>
+                </button>
+                <button class="btn btn-operation" value="/" title="Divide">
+                    &#247;
+                </button>
+
+                <button class="btn btn-numerical" value="7">7</button>
+                <button class="btn btn-numerical" value="8">8</button>
+                <button class="btn btn-numerical" value="9">9</button>
+                <button class="btn btn-operation" value="*" title="Multiply">
+                    &#215;
+                </button>
+
+                <button class="btn btn-numerical" value="4">4</button>
+                <button class="btn btn-numerical" value="5">5</button>
+                <button class="btn btn-numerical" value="6">6</button>
+                <button class="btn btn-operation" value="-" title="Subtract">
+                    &#8722;
+                </button>
+
+                <button class="btn btn-numerical" value="1">1</button>
+                <button class="btn btn-numerical" value="2">2</button>
+                <button class="btn btn-numerical" value="3">3</button>
+                <button class="btn btn-operation" value="+" title="Add">
+                    &#43;
+                </button>
+
+                <button class="btn btn-numerical" id="btn-0" value="0">
+                    0
+                </button>
+                <button class="btn btn-dot" value="." title="Decimal">,</button>
+                <button class="btn btn-calculate" value="=">=</button>
+            </div>
+        </main>
+        <script src="js/index.js"></script>
+    </body>
+</html>
