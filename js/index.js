@@ -3,6 +3,7 @@ const DEFAULT = "0";
 const DOT = ".";
 const NO_CONTENT = "";
 const SPECIAL_VALUES = ["NaN", "Infinity"];
+const NEGATIVE_INTEGER = /^-\d$/;
 
 document.querySelectorAll(".btn").forEach((button) => {
     button.addEventListener("click", (event) => {
@@ -81,14 +82,14 @@ function createDisplayContent(button, calculator) {
         return [DEFAULT, NO_CONTENT];
     }
     if (isButtonBackspace) {
-        let displayContent = current.slice(0, -1);
+        let remainingContent = current.slice(0, -1);
 
-        displayContent =
-            displayContent === NO_CONTENT || displayContent.startsWith("-")
+        remainingContent =
+            remainingContent === NO_CONTENT || NEGATIVE_INTEGER.test(current)
                 ? DEFAULT
-                : displayContent;
+                : remainingContent;
 
-        return [displayContent];
+        return [remainingContent];
     }
     if (isButtonCalculate && previous && current) {
         return [calculate(previous + current), NO_CONTENT];
