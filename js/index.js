@@ -66,16 +66,16 @@ function createDisplayContent(button, calculator) {
         return [current + key];
     }
     if (isOperationButton) {
-        let previousContent = null;
+        let previousUpdated = null;
 
-        if (!previousContent) {
-            previousContent = `${current} ${key}`;
+        if (!previous) {
+            previousUpdated = `${current} ${key}`;
         } else if (current) {
-            previousContent = `${calculate(previous + current)} ${key}`;
+            previousUpdated = `${calculate(previous + current)} ${key}`;
         } else {
-            previousContent = previous.slice(0, -1) + key;
+            previousUpdated = previous.slice(0, -1) + key;
         }
-        return [NO_CONTENT, previousContent];
+        return [NO_CONTENT, previousUpdated];
     }
     if (isButtonClear) {
         return [DEFAULT, NO_CONTENT];
