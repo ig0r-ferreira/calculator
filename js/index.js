@@ -90,7 +90,7 @@ function createDisplayContent(button, calculator) {
 
         return [displayContent];
     }
-    if (isButtonCalculate) {
+    if (isButtonCalculate && previous && current) {
         return [calculate(previous + current), NO_CONTENT];
     }
 
