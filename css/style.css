@@ -118,3 +118,7 @@ body {
 .btn:focus {
     outline: none;
 }
+
+.btn > * {
+    pointer-events: none;
+}
