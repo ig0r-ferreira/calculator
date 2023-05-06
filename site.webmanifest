@@ -1,6 +1,6 @@
 {
-    "name": "calculator",
-    "short_name": "calculator",
+    "name": "Calculator",
+    "short_name": "Calculator",
     "icons": [
         {
             "src": "favicons/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#0083b0",
-    "background_color": "#0083b0",
+    "theme_color": "#198fb7",
+    "background_color": "#198fb7",
     "display": "standalone"
 }
