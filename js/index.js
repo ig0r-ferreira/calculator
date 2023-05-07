@@ -4,6 +4,9 @@ const DOT = ".";
 const NO_CONTENT = "";
 const SPECIAL_VALUES = ["NaN", "Infinity"];
 const NEGATIVE_INTEGER = /^-\d$/;
+const ENDS_WITH_EXPONENT = /e[+-]\d+$/;
+const FORMAT_OPTIONS = {precision: 12, lowerExp: -4, upperExp: 9};
+
 
 document.querySelectorAll(".btn").forEach((button) => {
     button.addEventListener("click", (event) => {
@@ -61,7 +64,15 @@ function createDisplayContent(button, calculator) {
     const isButtonCalculate = button.classList.contains("btn-calculate");
 
     if (isNumericalButton) {
-        return [current === DEFAULT ? key : current + key];
+        if (current === DEFAULT){
+            return [key]
+        }
+        
+        let value = ENDS_WITH_EXPONENT.test(current)
+            ? formatValue(current, {notation: 'fixed'}) + key 
+            : current + key;
+
+        return [/\.0+$/.test(value) ? value : formatValue(value)];
     }
     if (isButtonDot) {
         return [current + key];
@@ -83,6 +94,9 @@ function createDisplayContent(button, calculator) {
     }
     if (isButtonBackspace) {
         let remainingContent = current.slice(0, -1);
+        if (/e[+-]$/.test(remainingContent)){
+            remainingContent = remainingContent.replace(/e[+-]/, '');
+        }
 
         remainingContent =
             remainingContent === NO_CONTENT || NEGATIVE_INTEGER.test(current)
@@ -117,11 +131,11 @@ function updateButtonStates(calculator) {
         });
     }
 
-    if (!current.includes(DOT)) {
-        calculator.querySelector(".btn-dot").removeAttribute("disabled");
-    } else {
+    if (current.includes(DOT) || ENDS_WITH_EXPONENT.test(current)) {
         calculator.querySelector("#btn-0").removeAttribute("disabled");
         calculator.querySelector(".btn-dot").setAttribute("disabled", true);
+    } else {
+        calculator.querySelector(".btn-dot").removeAttribute("disabled");
     }
 
     const lastKey = displayContent.charAt(displayContent.length - 1);
@@ -142,5 +156,9 @@ function updateButtonStates(calculator) {
 }
 
 function calculate(expression) {
-    return math.format(math.evaluate(expression), { precision: 14 });
+    return math.format(math.evaluate(expression), FORMAT_OPTIONS);
+}
+
+function formatValue(value, options=FORMAT_OPTIONS){
+    return math.format(math.bignumber(value), options)
 }
