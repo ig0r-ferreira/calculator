@@ -13,6 +13,10 @@
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
 
+## Author
+
+-   [Igor Ferreira](https://github.com/ig0r-ferreira)
+
 ## License
 
 This project is under license from [MIT](LICENSE).
